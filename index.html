@@ -1,990 +1,851 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZAYDE — Presencia Digital de Alto Impacto</title>
-    <!-- Google Fonts: Cormorant Garamond para títulos de lujo, Inter para lectura limpia -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
-    <style>
-        /* --- Fundamentos de Diseño de Lujo (Silent Luxury) --- */
-        :root {
-            --bg-primary: #0a0a0a;
-            --bg-secondary: #121212;
-            --bg-card: #181818;
-            --accent-gold: #c5a880;
-            --accent-gold-hover: #e0c9a6;
-            --text-main: #f5f5f5;
-            --text-muted: #8e8e93;
-            --border-fine: rgba(197, 168, 128, 0.15);
-            --border-light: rgba(255, 255, 255, 0.05);
-            --font-serif: 'Cormorant Garamond', serif;
-            --font-sans: 'Inter', sans-serif;
-            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            background-color: var(--bg-primary);
-            color: var(--text-main);
-            font-family: var(--font-sans);
-            -webkit-font-smoothing: antialiased;
-        }
-
-        body {
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* --- Tipografía y Títulos --- */
-        h1, h2, h3, h4 {
-            font-family: var(--font-serif);
-            font-weight: 300;
-            letter-spacing: 0.05em;
-        }
-
-        p {
-            font-size: 0.95rem;
-            font-weight: 300;
-            color: var(--text-muted);
-            letter-spacing: 0.02em;
-        }
-
-        .gold-text {
-            color: var(--accent-gold);
-        }
-
-        /* --- Componentes Reutilizables --- */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 5rem;
-        }
-
-        .section-header span {
-            font-family: var(--font-sans);
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.3em;
-            color: var(--accent-gold);
-            display: block;
-            margin-bottom: 1rem;
-        }
-
-        .section-header h2 {
-            font-size: 2.8rem;
-            color: var(--text-main);
-        }
-
-        /* Botones de Alta Costura */
-        .btn-premium {
-            display: inline-block;
-            background: transparent;
-            color: var(--text-main);
-            border: 1px solid var(--accent-gold);
-            padding: 1rem 2.5rem;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            text-decoration: none;
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-premium:hover {
-            color: var(--bg-primary);
-            background: var(--accent-gold);
-            box-shadow: 0 10px 30px rgba(197, 168, 128, 0.15);
-        }
-
-        .btn-secondary {
-            display: inline-block;
-            background: transparent;
-            color: var(--text-main);
-            border: 1px solid var(--border-light);
-            padding: 1rem 2.5rem;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            text-decoration: none;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--accent-gold);
-            color: var(--accent-gold);
-        }
-
-        /* --- 1. Navegación Estilo Joyería --- */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(10, 10, 10, 0.90);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-light);
-            transition: var(--transition);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 90px;
-        }
-
-        .logo {
-            text-decoration: none;
-            color: var(--text-main);
-            display: flex;
-            flex-direction: column;
-            line-height: 1;
-        }
-
-        .logo-title {
-            font-family: var(--font-serif);
-            font-size: 1.8rem;
-            letter-spacing: 0.25em;
-            font-weight: 300;
-        }
-
-        .logo-sub {
-            font-family: var(--font-sans);
-            font-size: 0.55rem;
-            text-transform: uppercase;
-            letter-spacing: 0.35em;
-            color: var(--accent-gold);
-            margin-top: 0.3rem;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-muted);
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-gold);
-        }
-
-        /* --- Hero Section Absoluta --- */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding-top: 90px;
-            position: relative;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            z-index: 2;
-        }
-
-        .hero h1 {
-            font-size: 4.5rem;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto 3rem auto;
-            line-height: 1.8;
-        }
-
-        /* --- 2. Servicios de Conversión Lineal --- */
-        .services {
-            padding: 100px 0;
-            background-color: var(--bg-secondary);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2px;
-            background-color: var(--border-light); /* Crea las líneas divisorias finas */
-        }
-
-        .service-card {
-            background-color: var(--bg-secondary);
-            padding: 4.5rem;
-            transition: var(--transition);
-        }
-
-        .service-card:hover {
-            background-color: var(--bg-card);
-        }
-
-        .service-card .icon-num {
-            font-family: var(--font-serif);
-            font-size: 1.5rem;
-            color: var(--accent-gold);
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        .service-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--text-main);
-        }
-
-        /* --- 3. Planes de Inversión Estructurados --- */
-        .pricing {
-            padding: 120px 0;
-        }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            align-items: stretch;
-        }
-
-        .price-card {
-            background-color: var(--bg-secondary);
-            border: 1px solid var(--border-light);
-            padding: 3.5rem 2.5rem;
-            display: flex;
-            flex-direction: column;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .price-card.popular {
-            border-color: var(--accent-gold);
-        }
-
-        .badge-popular {
-            position: absolute;
-            top: 0;
-            right: 2.5rem;
-            transform: translateY(-50%);
-            background: var(--accent-gold);
-            color: var(--bg-primary);
-            font-size: 0.6rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            padding: 0.4rem 1rem;
-            font-weight: 500;
-        }
-
-        .price-card h3 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .price-card .subtitle {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--accent-gold);
-            margin-bottom: 2rem;
-        }
-
-        .price-card .cost {
-            font-family: var(--font-serif);
-            font-size: 3rem;
-            color: var(--text-main);
-            margin-bottom: 2.5rem;
-            font-weight: 300;
-        }
-
-        .price-features {
-            list-style: none;
-            margin-bottom: 3.5rem;
-            flex-grow: 1;
-        }
-
-        .price-features li {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .price-features li::before {
-            content: "—";
-            position: absolute;
-            left: 0;
-            color: var(--accent-gold);
-        }
-
-        .price-card .btn-premium, .price-card .btn-secondary {
-            width: 100%;
-            text-align: center;
-        }
-
-        /* --- 4. Pasarela y Proceso Interactivo --- */
-        .checkout {
-            padding: 120px 0;
-            background-color: var(--bg-secondary);
-        }
-
-        .checkout-wrapper {
-            max-width: 700px;
-            margin: 0 auto;
-            background: var(--bg-primary);
-            border: 1px solid var(--border-light);
-            padding: 4rem;
-        }
-
-        /* Indicador de pasos minimalista */
-        .steps-indicator {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 3.5rem;
-            position: relative;
-        }
-
-        .steps-indicator::before {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: var(--border-light);
-            z-index: 1;
-        }
-
-        .step-dot {
-            width: 30px;
-            height: 30px;
-            background: var(--bg-primary);
-            border: 1px solid var(--border-light);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.75rem;
-            z-index: 2;
-            color: var(--text-muted);
-            transition: var(--transition);
-        }
-
-        .step-dot.active {
-            border-color: var(--accent-gold);
-            color: var(--accent-gold);
-            box-shadow: 0 0 15px rgba(197, 168, 128, 0.2);
-        }
-
-        /* Formulario pasarela */
-        .step-content {
-            display: none;
-        }
-
-        .step-content.active {
-            display: block;
-        }
-
-        .step-content h3 {
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .form-group {
-            margin-bottom: 1.8rem;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            margin-bottom: 0.6rem;
-            color: var(--text-muted);
-        }
-
-        .form-control {
-            width: 100%;
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid var(--border-light);
-            padding: 0.8rem 0;
-            color: var(--text-main);
-            font-family: var(--font-sans);
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--accent-gold);
-        }
-
-        /* Selección de Paquete Visual */
-        .package-selector {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .package-option {
-            border: 1px solid var(--border-light);
-            padding: 1.5rem;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .package-option:hover, .package-option.selected {
-            border-color: var(--accent-gold);
-            background: rgba(197, 168, 128, 0.02);
-        }
-
-        .package-option input {
-            display: none;
-        }
-
-        /* Contenedores de Pago */
-        .payment-methods {
-            text-align: center;
-            margin-top: 1.5rem;
-        }
-
-        .paypal-placeholder-btn {
-            background: #ffc439;
-            color: #003087;
-            font-weight: bold;
-            padding: 0.9rem;
-            border-radius: 4px;
-            display: block;
-            text-decoration: none;
-            font-size: 0.9rem;
-            letter-spacing: 0.05em;
-            margin-bottom: 1rem;
-            transition: opacity 0.2s;
-        }
-
-        .paypal-placeholder-btn:hover {
-            opacity: 0.9;
-        }
-
-        .form-navigation {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 3rem;
-        }
-
-        .confidentiality-note {
-            font-size: 0.75rem;
-            text-align: center;
-            margin-top: 2rem;
-            color: var(--text-muted);
-            font-style: italic;
-        }
-
-        /* --- 5. Sección FAQ (Acordeón Minimalista) --- */
-        .faq {
-            padding: 120px 0;
-        }
-
-        .faq-wrapper {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            border-bottom: 1px solid var(--border-light);
-            padding: 1.5rem 0;
-        }
-
-        .faq-trigger {
-            width: 100%;
-            background: none;
-            border: none;
-            text-align: left;
-            color: var(--text-main);
-            font-family: var(--font-serif);
-            font-size: 1.4rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem 0;
-        }
-
-        .faq-trigger span {
-            font-family: var(--font-sans);
-            font-size: 1rem;
-            color: var(--accent-gold);
-            transition: var(--transition);
-        }
-
-        .faq-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .faq-content p {
-            padding-top: 1rem;
-            padding-bottom: 0.5rem;
-        }
-
-        .faq-item.active .faq-content {
-            max-height: 200px;
-        }
-
-        .faq-item.active .faq-trigger span {
-            transform: rotate(45deg);
-        }
-
-        /* --- 6. Footer & Cierre de Marca --- */
-        footer {
-            background-color: var(--bg-secondary);
-            border-top: 1px solid var(--border-light);
-            padding: 5px 0 3rem 0;
-            text-align: center;
-        }
-
-        .footer-cta {
-            padding: 100px 0;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .footer-cta h2 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-cta p {
-            margin-bottom: 2.5rem;
-        }
-
-        .contact-phone {
-            display: block;
-            font-family: var(--font-serif);
-            font-size: 1.8rem;
-            color: var(--accent-gold);
-            text-decoration: none;
-            margin-top: 3rem;
-            letter-spacing: 0.1em;
-            transition: var(--transition);
-        }
-
-        .contact-phone:hover {
-            color: var(--accent-gold-hover);
-        }
-
-        .footer-bottom {
-            margin-top: 5rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.02);
-            font-size: 0.75rem;
-            letter-spacing: 0.1em;
-            color: rgba(255,255,255,0.2);
-        }
-
-        /* --- Adaptabilidad Móvil Fluida --- */
-        @media (max-width: 968px) {
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            .pricing-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-            .hero h1 {
-                font-size: 3rem;
-            }
-            .nav-links {
-                display: none; /* Simplificado para la demostración */
-            }
-            .checkout-wrapper {
-                padding: 2rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>ZAYDE — Presencia Digital de Alto Impacto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{overflow-x:hidden;width:100%;}
+:root{
+  --crimson:#C9A14A;
+  --crimson-light:#E8C873;
+  --crimson-dark:#8A6A23;
+  --violet:#99651E;
+  --violet-light:#E8C873;
+  --electric:#F0DCA0;
+  --neon-red:#E8C873;
+  --dark:#070605;
+  --dark-2:#0B0A08;
+  --dark-3:#141210;
+  --dark-4:#1C1916;
+  --surface:#211D17;
+  --surface-2:#2A251D;
+  --border:rgba(201,161,74,0.25);
+  --border-v:rgba(138,107,31,0.25);
+  --text-primary:#F5EFE2;
+  --text-secondary:#B7AC95;
+  --text-muted:#7A715E;
+  --font-display:'Playfair Display',serif;
+  --font-body:'DM Sans',sans-serif;
+  --font-mono:'Montserrat',sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--dark);color:var(--text-primary);font-family:var(--font-body);overflow-x:hidden;cursor:none;}
+
+/* CURSOR */
+.cursor{position:fixed;width:10px;height:10px;background:var(--crimson-light);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .08s,width .2s,height .2s;}
+.cursor-ring{position:fixed;width:32px;height:32px;border:1px solid rgba(201,161,74,0.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .14s ease-out,width .2s,height .2s,border-color .2s;}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-track{background:var(--dark);}
+::-webkit-scrollbar-thumb{background:var(--crimson);border-radius:2px;}
+
+/* SPACE BG */
+#space-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;max-width:100%;}
+#particles{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;max-width:100%;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:1;opacity:.3;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;width:100%;z-index:100;padding:1.4rem 5rem;display:flex;align-items:center;justify-content:space-between;transition:all .5s;}
+nav.scrolled{background:rgba(4,4,10,0.88);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);}
+.nav-logo{display:flex;align-items:center;gap:0;font-family:var(--font-display);font-size:1.7rem;font-weight:800;letter-spacing:.04em;text-decoration:none;color:#D4AF6A;}
+.nav-logo img{width:38px;height:38px;object-fit:contain;margin-right:-2px;}
+.nav-links{display:flex;gap:2.8rem;list-style:none;align-items:center;}
+.nav-links a{color:var(--text-secondary);text-decoration:none;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;transition:color .3s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--crimson-light);transition:width .3s;}
+.nav-links a:hover{color:#fff;}
+.nav-links a:hover::after{width:100%;}
+.nav-cta{background:transparent;color:#fff;padding:.55rem 1.4rem;border-radius:3px;text-decoration:none;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;transition:all .3s;border:1px solid rgba(201,161,74,.6);}
+.nav-cta:hover{background:var(--crimson);border-color:var(--crimson);box-shadow:0 0 24px rgba(201,161,74,.4);}
+
+/* ═══ HERO ═══ */
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:0 5rem;padding-top:12rem;}
+.hero-content{position:relative;z-index:10;max-width:1100px;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;padding-bottom:4rem;}
+
+/* HERO LEFT */
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;background:rgba(201,161,74,.08);border:1px solid rgba(201,161,74,.25);border-radius:2px;padding:.35rem 1rem;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--crimson-light);margin-bottom:2rem;}
+.hero-eyebrow-dot{width:5px;height:5px;background:var(--crimson-light);border-radius:50%;animation:blink 1.8s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1;box-shadow:0 0 6px var(--crimson-light)}50%{opacity:.2;box-shadow:none}}
+
+.hero-title{font-family:var(--font-display);font-size:clamp(3rem,5.5vw,5rem);font-weight:800;line-height:1.0;letter-spacing:-.02em;margin-bottom:1.8rem;}
+.hero-title .t1{display:block;color:#fff;}
+.hero-title .t2{display:block;background:linear-gradient(135deg,var(--crimson-light) 0%,var(--violet-light) 50%,var(--electric) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-title .t3{display:block;color:rgba(255,255,255,.15);font-size:clamp(2rem,3.5vw,3.2rem);font-weight:700;letter-spacing:.05em;}
+
+.hero-desc{font-size:1rem;color:var(--text-secondary);line-height:1.8;max-width:480px;margin-bottom:2.5rem;font-weight:300;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:linear-gradient(135deg,var(--crimson),#8A6A23);color:#fff;padding:.85rem 2rem;border-radius:3px;text-decoration:none;font-weight:600;font-size:.88rem;letter-spacing:.08em;transition:all .3s;border:none;cursor:pointer;position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:.5rem;}
+.btn-primary::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--crimson-light),var(--violet));opacity:0;transition:opacity .3s;}
+.btn-primary:hover::after{opacity:1;}
+.btn-primary>*{position:relative;z-index:1;}
+.btn-ghost{background:transparent;color:rgba(255,255,255,.7);padding:.85rem 2rem;border-radius:3px;text-decoration:none;font-weight:500;font-size:.88rem;letter-spacing:.08em;transition:all .3s;border:1px solid rgba(255,255,255,.1);cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;}
+.btn-ghost:hover{border-color:rgba(255,255,255,.3);color:#fff;}
+.hero-stats{display:flex;gap:2.5rem;margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.06);}
+.hero-stats-num{font-family:var(--font-display);font-size:2rem;font-weight:800;background:linear-gradient(135deg,#fff,var(--text-secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-stat-label{font-size:.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.12em;margin-top:.2rem;font-family:var(--font-mono);}
+
+/* HERO RIGHT */
+.hero-right{position:relative;height:520px;display:flex;align-items:center;justify-content:center;}
+.sphere-wrap{position:relative;width:380px;height:380px;}
+.sphere-core{width:100%;height:100%;border-radius:50%;background:radial-gradient(ellipse at 35% 35%,rgba(201,161,74,.6) 0%,rgba(138,107,31,.3) 40%,rgba(4,4,10,.9) 75%);box-shadow:0 0 80px rgba(201,161,74,.3),0 0 160px rgba(138,107,31,.15),inset 0 0 60px rgba(201,161,74,.15);animation:spherePulse 6s ease-in-out infinite;position:relative;overflow:hidden;}
+.sphere-core::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 18px,rgba(255,255,255,.025) 18px,rgba(255,255,255,.025) 19px),repeating-linear-gradient(90deg,transparent,transparent 18px,rgba(255,255,255,.025) 18px,rgba(255,255,255,.025) 19px);border-radius:50%;animation:gridRotate 30s linear infinite;}
+.sphere-core::after{content:'';position:absolute;top:12%;left:20%;width:30%;height:20%;background:radial-gradient(ellipse,rgba(255,255,255,.25),transparent);border-radius:50%;filter:blur(4px);}
+@keyframes spherePulse{0%,100%{box-shadow:0 0 80px rgba(201,161,74,.3),0 0 160px rgba(138,107,31,.15),inset 0 0 60px rgba(201,161,74,.15)}50%{box-shadow:0 0 120px rgba(201,161,74,.5),0 0 220px rgba(138,107,31,.25),inset 0 0 80px rgba(201,161,74,.25)}}
+@keyframes gridRotate{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+
+.orbit-ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;border:1px solid;}
+.orbit-ring-1{width:440px;height:440px;border-color:rgba(201,161,74,.2);animation:orbitSpin 18s linear infinite;}
+.orbit-ring-2{width:520px;height:520px;border-color:rgba(138,107,31,.12);animation:orbitSpin 28s linear infinite reverse;}
+.orbit-ring-3{width:600px;height:600px;border-color:rgba(255,255,255,.05);animation:orbitSpin 40s linear infinite;}
+@keyframes orbitSpin{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+.orbit-dot{position:absolute;width:8px;height:8px;border-radius:50%;top:-4px;left:50%;margin-left:-4px;}
+.orbit-dot-1{background:var(--crimson-light);box-shadow:0 0 12px var(--crimson-light);}
+.orbit-dot-2{background:var(--violet-light);box-shadow:0 0 12px var(--violet-light);}
+.orbit-dot-3{background:#C9A14A;box-shadow:0 0 12px #C9A14A;}
+.orbit-label{position:absolute;font-family:var(--font-mono);font-size:.55rem;letter-spacing:.15em;color:var(--text-muted);white-space:nowrap;top:-20px;left:50%;transform:translateX(-50%);}
+
+.planet{position:absolute;border-radius:50%;animation:floatPlanet linear infinite;}
+.planet-a{width:18px;height:18px;background:radial-gradient(circle at 35% 35%,#C9A14A,#8A6A23);top:10%;right:5%;animation-duration:14s;box-shadow:0 0 14px rgba(201,161,74,.5);}
+.planet-b{width:10px;height:10px;background:radial-gradient(circle at 35% 35%,var(--violet-light),#5C3A0A);bottom:20%;left:5%;animation-duration:20s;box-shadow:0 0 10px rgba(232,200,115,.4);}
+.planet-c{width:26px;height:26px;background:radial-gradient(circle at 35% 35%,#8A6A23,#2A1F10);top:55%;right:-5%;animation-duration:17s;box-shadow:0 0 18px rgba(138,107,31,.4);}
+@keyframes floatPlanet{0%{transform:translateY(0) rotate(0)}50%{transform:translateY(-20px) rotate(180deg)}100%{transform:translateY(0) rotate(360deg)}}
+
+.hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;color:var(--text-muted);font-family:var(--font-mono);font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;}
+.hero-scroll-line{width:1px;height:48px;background:linear-gradient(var(--crimson),transparent);animation:scrollLine 2s ease-in-out infinite;}
+@keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ═══ ZAYDE FLOATING BRAND TITLE ═══ */
+.zayde-brand-hero{
+  text-align:center;
+  padding:6rem 5rem 3rem;
+  position:relative;
+  z-index:2;
+}
+.zayde-spin-wrap{
+  display:inline-block;
+  perspective:800px;
+  margin-bottom:1.5rem;
+}
+.zayde-spin{
+  font-family:var(--font-display);
+  font-size:clamp(3rem,12vw,11rem);
+  font-weight:800;
+  letter-spacing:.04em;
+  display:inline-block;
+  animation:zaydeSpin 8s linear infinite, zaydeColor 3s linear infinite;
+  transform-style:preserve-3d;
+  will-change:transform;
+  line-height:1;
+}
+@keyframes zaydeSpin{
+  from{transform:rotateY(0deg);}
+  to{transform:rotateY(360deg);}
+}
+@keyframes zaydeColor{
+  0%{color:#C9A14A;}
+  50%{color:#F0DCA0;}
+  100%{color:#C9A14A;}
+}
+.zayde-brand-sub{
+  font-family:var(--font-mono);
+  font-size:.75rem;
+  letter-spacing:.5em;
+  text-transform:uppercase;
+  color:var(--text-muted);
+  margin-top:2rem;
+}
+
+/* MARQUEE */
+.marquee-section{padding:1.8rem 0;border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04);overflow:hidden;position:relative;z-index:2;}
+.marquee-track{display:flex;gap:3.5rem;animation:marquee 22s linear infinite;width:max-content;}
+.marquee-item{display:flex;align-items:center;gap:.8rem;white-space:nowrap;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text-muted);}
+.marquee-sep{width:3px;height:3px;background:var(--crimson);border-radius:50%;opacity:.7;}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ═══ SECTIONS ═══ */
+section{position:relative;z-index:2;}
+.section-label{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--crimson-light);margin-bottom:.8rem;display:block;}
+.section-title{font-family:var(--font-display);font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:800;line-height:1.1;margin-bottom:1rem;letter-spacing:-.01em;}
+.section-title em{font-style:normal;background:linear-gradient(135deg,var(--crimson-light),var(--violet-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.section-sub{color:var(--text-secondary);font-size:.95rem;line-height:1.75;max-width:560px;font-weight:300;}
+
+/* ═══ SERVICIOS ═══ */
+#servicios{padding:7rem 5rem;background:linear-gradient(180deg,transparent,rgba(14,14,26,.4),transparent);}
+.servicios-header{text-align:center;margin-bottom:4rem;}
+.servicios-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:1200px;margin:0 auto;}
+.servicio-card{background:var(--dark-3);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:2rem 1.5rem;position:relative;overflow:hidden;transition:all .4s;cursor:default;}
+.servicio-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,161,74,.04),rgba(138,107,31,.04));opacity:0;transition:opacity .4s;}
+.servicio-card:hover{transform:translateY(-8px);border-color:rgba(201,161,74,.35);box-shadow:0 24px 60px rgba(0,0,0,.4),0 0 0 1px rgba(201,161,74,.1);}
+.servicio-card:hover::before{opacity:1;}
+.servicio-icon-wrap{width:56px;height:56px;border-radius:12px;background:rgba(201,161,74,.08);border:1px solid rgba(201,161,74,.2);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1.4rem;position:relative;transition:all .4s;}
+.servicio-card:hover .servicio-icon-wrap{background:rgba(201,161,74,.15);box-shadow:0 0 20px rgba(201,161,74,.25);}
+.servicio-card-title{font-family:var(--font-display);font-size:1rem;font-weight:700;margin-bottom:.6rem;}
+.servicio-card-desc{font-size:.83rem;color:var(--text-secondary);line-height:1.65;font-weight:300;}
+.servicio-tag{display:inline-block;margin-top:1rem;font-family:var(--font-mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--crimson-light);padding:.2rem .6rem;border-radius:2px;background:rgba(201,161,74,.08);border:1px solid rgba(201,161,74,.18);}
+
+/* ═══ ANIMATED NUMBERS ═══ */
+#impacto{padding:6rem 5rem;background:linear-gradient(180deg,transparent,rgba(14,14,26,.6),transparent);}
+.impacto-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;}
+.impacto-item{text-align:center;padding:2.5rem 1.5rem;background:var(--dark-3);border:1px solid rgba(255,255,255,.05);border-radius:8px;position:relative;overflow:hidden;transition:all .4s;}
+.impacto-item::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--crimson),var(--violet));transform:scaleX(0);transition:transform .4s;}
+.impacto-item:hover::after{transform:scaleX(1);}
+.impacto-num{font-family:var(--font-display);font-size:3rem;font-weight:800;background:linear-gradient(135deg,var(--crimson-light),var(--violet-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;}
+.impacto-label{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);margin-top:.6rem;}
+
+/* ═══ PROCESO ═══ */
+#process{padding:7rem 5rem;background:linear-gradient(180deg,transparent,rgba(14,14,26,.6),transparent);}
+.process-header{text-align:center;margin-bottom:5rem;}
+.process-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;position:relative;max-width:900px;margin:0 auto;}
+.process-connector{position:absolute;top:36px;left:calc(16.7% + 2.5rem);right:calc(16.7% + 2.5rem);height:1px;background:linear-gradient(90deg,var(--crimson),var(--violet));z-index:0;opacity:.4;}
+.step-card{text-align:center;position:relative;z-index:1;}
+.step-icon{width:72px;height:72px;border-radius:50%;border:1px solid rgba(255,255,255,.08);background:var(--dark-3);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-family:var(--font-mono);font-size:.75rem;font-weight:700;letter-spacing:.05em;color:var(--text-muted);position:relative;}
+.step-icon::before{content:'';position:absolute;inset:-2px;border-radius:50%;border:1px solid transparent;background:linear-gradient(var(--dark-3),var(--dark-3)) padding-box,linear-gradient(135deg,var(--crimson),var(--violet)) border-box;}
+.step-card:nth-child(1) .step-icon{color:var(--crimson-light);}
+.step-card:nth-child(2) .step-icon{color:var(--violet-light);}
+.step-card:nth-child(3) .step-icon{color:#C9A14A;}
+.step-title{font-family:var(--font-display);font-size:1rem;font-weight:700;margin-bottom:.75rem;}
+.step-desc{font-size:.88rem;color:var(--text-secondary);line-height:1.7;font-weight:300;}
+
+/* ═══ PRICING ═══ */
+#pricing{padding:7rem 5rem;}
+.pricing-header{text-align:center;margin-bottom:4rem;}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1100px;margin:0 auto;}
+.price-card{background:var(--dark-3);border:1px solid rgba(255,255,255,.06);border-radius:6px;padding:2.5rem 2rem;position:relative;overflow:hidden;transition:all .5s;}
+.price-card:hover{transform:translateY(-5px);border-color:rgba(201,161,74,.35);}
+.price-card.featured{background:linear-gradient(160deg,var(--dark-3),rgba(138,107,31,.07));border-color:rgba(138,107,31,.3);box-shadow:0 0 50px rgba(138,107,31,.1);}
+.price-badge{position:absolute;top:1.5rem;right:1.5rem;background:linear-gradient(135deg,var(--violet),var(--crimson));color:#fff;font-family:var(--font-mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;padding:.28rem .75rem;border-radius:2px;font-weight:700;}
+.price-tier{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1rem;}
+.price-amount{font-family:var(--font-display);font-size:2.6rem;font-weight:800;margin-bottom:.3rem;letter-spacing:-.02em;}
+.price-amount span{font-size:.95rem;font-weight:400;color:var(--text-secondary);font-family:var(--font-body);}
+.price-card.featured .price-amount{background:linear-gradient(135deg,var(--crimson-light),var(--violet-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.price-tagline{font-size:.85rem;color:var(--text-secondary);margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,.06);line-height:1.5;font-weight:300;}
+.price-features{list-style:none;display:flex;flex-direction:column;gap:.85rem;margin-bottom:2.5rem;}
+.price-features li{display:flex;gap:.75rem;font-size:.87rem;color:var(--text-secondary);align-items:flex-start;line-height:1.5;}
+.check-icon{flex-shrink:0;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.55rem;margin-top:2px;}
+.check-yes{background:rgba(0,200,100,.18);color:#00d464;}
+.check-no{background:rgba(255,255,255,.05);color:rgba(255,255,255,.2);font-size:.65rem;}
+.price-features li.not-included{color:var(--text-muted);opacity:.55;}
+.price-features li.included{color:var(--text-primary);}
+.price-btn{display:block;text-align:center;padding:.9rem;border-radius:4px;text-decoration:none;font-family:var(--font-display);font-weight:700;font-size:.82rem;letter-spacing:.08em;transition:all .3s;cursor:pointer;border:none;}
+.price-btn.outline{border:1px solid rgba(255,255,255,.1);color:var(--text-primary);background:transparent;}
+.price-btn.outline:hover{border-color:var(--crimson);color:var(--crimson-light);}
+.price-btn.filled{background:linear-gradient(135deg,var(--violet),var(--crimson));color:#fff;}
+.price-btn.filled:hover{box-shadow:0 12px 32px rgba(138,107,31,.4);transform:translateY(-2px);}
+
+/* ═══ WHY ZAYDE ═══ */
+#features{padding:7rem 5rem;}
+.features-layout{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+.features-list{list-style:none;display:flex;flex-direction:column;gap:2rem;margin-top:2.5rem;}
+.feature-item{display:flex;gap:1.2rem;align-items:flex-start;}
+.fi-icon{flex-shrink:0;width:42px;height:42px;border-radius:4px;background:rgba(201,161,74,.08);border:1px solid rgba(201,161,74,.2);display:flex;align-items:center;justify-content:center;font-size:1rem;}
+.fi-text h4{font-family:var(--font-display);font-size:.9rem;font-weight:700;margin-bottom:.3rem;}
+.fi-text p{font-size:.85rem;color:var(--text-secondary);line-height:1.65;font-weight:300;}
+
+.features-visual{position:relative;height:480px;display:flex;align-items:center;justify-content:center;}
+.fv-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:130px;height:130px;border-radius:50%;background:linear-gradient(135deg,var(--dark-3),var(--surface));border:1px solid rgba(201,161,74,.3);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:.85rem;font-weight:800;text-align:center;line-height:1.3;z-index:5;}
+.fv-orbit{position:absolute;top:50%;left:50%;border-radius:50%;border:1px solid;}
+.fv-orbit-1{width:240px;height:240px;border-color:rgba(201,161,74,.18);animation:orbitSpin 14s linear infinite;}
+.fv-orbit-2{width:360px;height:360px;border-color:rgba(138,107,31,.12);animation:orbitSpin 22s linear infinite reverse;}
+.fv-orbit-3{width:460px;height:460px;border-color:rgba(255,255,255,.04);}
+.fv-node{position:absolute;font-family:var(--font-mono);font-size:.5rem;padding:.25rem .6rem;border-radius:2px;white-space:nowrap;top:-16px;left:50%;transform:translateX(-50%);}
+.node-red{background:rgba(201,161,74,.15);border:1px solid rgba(201,161,74,.35);color:var(--crimson-light);}
+.node-violet{background:rgba(138,107,31,.15);border:1px solid rgba(138,107,31,.35);color:var(--violet-light);}
+.node-teal{background:rgba(0,180,150,.12);border:1px solid rgba(0,180,150,.3);color:#C9A14A;}
+.node-gold{background:rgba(255,200,50,.1);border:1px solid rgba(255,200,50,.25);color:#E8C873;}
+
+/* ═══ TESTIMONIOS ═══ */
+#testimonios{padding:7rem 5rem;background:linear-gradient(180deg,transparent,rgba(14,14,26,.5),transparent);}
+.testimonios-header{text-align:center;margin-bottom:4rem;}
+.testimonios-track-wrap{overflow:hidden;position:relative;}
+.testimonios-track-wrap::before,.testimonios-track-wrap::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:3;pointer-events:none;}
+.testimonios-track-wrap::before{left:0;background:linear-gradient(to right,var(--dark),transparent);}
+.testimonios-track-wrap::after{right:0;background:linear-gradient(to left,var(--dark),transparent);}
+.testimonios-track{display:flex;gap:2rem;animation:testScroll 30s linear infinite;width:max-content;}
+.testimonios-track:hover{animation-play-state:paused;}
+.test-card{background:var(--dark-3);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:2rem;width:320px;flex-shrink:0;transition:border-color .3s;}
+.test-card:hover{border-color:rgba(201,161,74,.3);}
+.test-stars{display:flex;gap:2px;marginbottom:1rem;}
+.test-star{color:#E8C873;font-size:.85rem;}
+.test-text{font-size:.88rem;color:var(--text-secondary);line-height:1.7;font-weight:300;margin-bottom:1.2rem;font-style:italic;}
+.test-author{display:flex;align-items:center;gap:.75rem;}
+.test-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--crimson),var(--violet));display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:.8rem;font-weight:800;color:#fff;}
+.test-name{font-family:var(--font-display);font-size:.88rem;font-weight:700;}
+.test-biz{font-size:.75rem;color:var(--text-muted);font-family:var(--font-mono);}
+@keyframes testScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ═══ RESERVA — 3 PASOS ═══ */
+#reserva{padding:7rem 5rem;}
+.reserva-header{text-align:center;margin-bottom:4rem;}
+.reserva-wrap{max-width:860px;margin:0 auto;}
+.step-progress{display:flex;align-items:center;justify-content:center;margin-bottom:3.5rem;gap:0;}
+.sp-step{display:flex;flex-direction:column;align-items:center;gap:.5rem;position:relative;}
+.sp-num{width:48px;height:48px;border-radius:50%;border:2px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:.75rem;font-weight:700;color:var(--text-muted);background:var(--dark-3);transition:all .4s;cursor:pointer;}
+.sp-step.active .sp-num{border-color:var(--crimson);color:var(--crimson-light);background:rgba(201,161,74,.1);box-shadow:0 0 20px rgba(201,161,74,.25);}
+.sp-step.done .sp-num{border-color:var(--crimson);color:#fff;background:var(--crimson);}
+.sp-label{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text-muted);transition:color .4s;}
+.sp-step.active .sp-label{color:var(--crimson-light);}
+.sp-step.done .sp-label{color:var(--text-secondary);}
+.sp-line{flex:1;height:1px;background:rgba(255,255,255,.06);max-width:120px;margin:0 1rem;margin-bottom:1.8rem;}
+.sp-line.done{background:linear-gradient(90deg,var(--crimson),var(--violet));}
+.step-panel{display:none;}
+.step-panel.active{display:block;animation:fadeUp .4s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.reserva-card{background:var(--dark-3);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:2.5rem;}
+.step-title-sm{font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:.4rem;}
+.step-subtitle{font-size:.85rem;color:var(--text-secondary);margin-bottom:2rem;font-weight:300;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
+.form-group{display:flex;flex-direction:column;gap:.45rem;}
+.form-group.full{grid-column:1/-1;}
+.form-label{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);}
+.form-input{background:var(--dark-4);border:1px solid rgba(255,255,255,.07);border-radius:4px;padding:.8rem 1rem;color:var(--text-primary);font-family:var(--font-body);font-size:.9rem;outline:none;transition:border-color .3s;width:100%;}
+.form-input:focus{border-color:rgba(201,161,74,.5);}
+.form-input::placeholder{color:var(--text-muted);}
+select.form-input option{background:var(--dark-4);}
+textarea.form-input{resize:vertical;min-height:110px;}
+.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem;}
+.pkg-card{background:var(--dark-4);border:2px solid rgba(255,255,255,.06);border-radius:6px;padding:1.4rem;cursor:pointer;transition:all .3s;position:relative;}
+.pkg-card:hover{border-color:rgba(201,161,74,.3);}
+.pkg-card.selected{border-color:var(--crimson);background:rgba(201,161,74,.06);}
+.pkg-card-name{font-family:var(--font-display);font-size:.95rem;font-weight:700;margin-bottom:.3rem;}
+.pkg-card-price{font-family:var(--font-mono);font-size:1.1rem;color:var(--crimson-light);font-weight:700;margin-bottom:.8rem;}
+.pkg-card-feat{font-size:.78rem;color:var(--text-muted);line-height:1.6;}
+.pkg-card-radio{position:absolute;top:.8rem;right:.8rem;width:16px;height:16px;border-radius:50%;border:2px solid rgba(255,255,255,.15);transition:all .3s;}
+.pkg-card.selected .pkg-card-radio{border-color:var(--crimson);background:var(--crimson);}
+.pkg-popular-tag{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--violet),var(--crimson));color:#fff;font-family:var(--font-mono);font-size:.52rem;letter-spacing:.15em;padding:.2rem .7rem;border-radius:2px;white-space:nowrap;}
+.step-nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;}
+.step-back{background:transparent;border:1px solid rgba(255,255,255,.1);color:var(--text-secondary);padding:.75rem 1.5rem;border-radius:4px;font-family:var(--font-display);font-size:.82rem;font-weight:700;cursor:pointer;transition:all .3s;}
+.step-back:hover{border-color:rgba(255,255,255,.25);color:#fff;}
+.step-next{background:linear-gradient(135deg,var(--crimson),var(--violet));color:#fff;border:none;padding:.75rem 2rem;border-radius:4px;font-family:var(--font-display);font-size:.82rem;font-weight:700;cursor:pointer;transition:all .3s;display:flex;align-items:center;gap:.5rem;}
+.step-next:hover{box-shadow:0 10px 28px rgba(201,161,74,.35);transform:translateY(-2px);}
+.step-hint{font-family:var(--font-mono);font-size:.62rem;color:var(--text-muted);letter-spacing:.1em;}
+.contact-alts{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem;}
+.contact-alt{display:flex;align-items:center;gap:1rem;background:var(--dark-4);border:1px solid rgba(255,255,255,.06);border-radius:6px;padding:1.2rem;text-decoration:none;transition:all .3s;}
+.contact-alt:hover{border-color:rgba(201,161,74,.3);}
+.contact-alt-icon{font-size:1.3rem;flex-shrink:0;}
+.contact-alt-text h5{font-family:var(--font-display);font-size:.85rem;font-weight:700;margin-bottom:.15rem;}
+.contact-alt-text p{font-size:.75rem;color:var(--text-muted);}
+
+/* ═══ FAQ ═══ */
+#faq{padding:7rem 5rem;background:linear-gradient(180deg,transparent,rgba(14,14,26,.5),transparent);}
+.faq-header{text-align:center;margin-bottom:3.5rem;}
+.faq-layout{max-width:720px;margin:0 auto;}
+.faq-item{border-bottom:1px solid rgba(255,255,255,.05);}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:1.3rem 0;cursor:pointer;font-size:.92rem;font-weight:500;transition:color .3s;gap:1rem;font-family:var(--font-display);}
+.faq-q:hover{color:var(--crimson-light);}
+.faq-icon{flex-shrink:0;width:22px;height:22px;border-radius:50%;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:.7rem;transition:all .3s;color:var(--text-muted);}
+.faq-item.open .faq-icon{background:var(--crimson);border-color:var(--crimson);color:#fff;transform:rotate(45deg);}
+.faq-a{display:none;padding:0 0 1.3rem;font-size:.87rem;color:var(--text-secondary);line-height:1.75;font-weight:300;}
+.faq-item.open .faq-a{display:block;}
+
+/* ═══ CTA FINAL ═══ */
+#cta-final{padding:9rem 5rem;text-align:center;position:relative;overflow:hidden;}
+#cta-final::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;background:radial-gradient(circle,rgba(138,107,31,.12) 0%,transparent 65%);pointer-events:none;}
+#cta-final::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400px;height:400px;background:radial-gradient(circle,rgba(201,161,74,.1) 0%,transparent 65%);pointer-events:none;}
+.cta-title{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;margin-bottom:1.5rem;line-height:1.05;letter-spacing:-.02em;position:relative;z-index:2;}
+.cta-sub{color:var(--text-secondary);font-size:.98rem;margin-bottom:2.5rem;max-width:480px;margin-left:auto;margin-right:auto;font-weight:300;position:relative;z-index:2;}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative;z-index:2;}
+
+/* ═══ FOOTER ═══ */
+footer{background:var(--dark-2);border-top:1px solid rgba(255,255,255,.04);padding:4rem 5rem 2.5rem;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.footer-brand-logo{display:flex;align-items:center;gap:0;font-family:var(--font-display);font-size:1.6rem;font-weight:800;color:#D4AF6A;margin-bottom:1rem;letter-spacing:.04em;}
+.footer-brand-logo img{width:34px;height:34px;object-fit:contain;margin-right:-2px;}
+.footer-brand p{font-size:.83rem;color:var(--text-muted);line-height:1.7;max-width:240px;font-weight:300;}
+.footer-col h4{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1.3rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.65rem;}
+.footer-col a{color:var(--text-secondary);text-decoration:none;font-size:.84rem;transition:color .3s;font-weight:300;}
+.footer-col a:hover{color:var(--crimson-light);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.04);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;font-family:var(--font-mono);font-size:.65rem;letter-spacing:.08em;color:var(--text-muted);}
+
+/* ═══ SCROLL ANIMATIONS ═══ */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .75s ease,transform .75s ease;}
+.reveal.revealed{opacity:1;transform:translateY(0);}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .75s ease,transform .75s ease;}
+.reveal-left.revealed{opacity:1;transform:translateX(0);}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .75s ease,transform .75s ease;}
+.reveal-right.revealed{opacity:1;transform:translateX(0);}
+.stagger-1{transition-delay:.1s!important;}
+.stagger-2{transition-delay:.2s!important;}
+.stagger-3{transition-delay:.3s!important;}
+.stagger-4{transition-delay:.4s!important;}
+
+/* ═══ PAYMENT SECTION (Elegant PayPal Integration) ═══ */
+.order-summary{background:var(--dark-4);border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:1.5rem;margin-bottom:1.8rem;}
+.order-summary-title{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1rem;}
+.order-row{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;}
+.order-row-sub{margin-top:.3rem;}
+.order-row-sub span{font-size:.78rem;color:var(--text-muted);font-weight:300;}
+.order-item-name{font-family:var(--font-display);font-size:.95rem;font-weight:700;}
+.order-item-price{font-family:var(--font-mono);font-size:1rem;color:var(--crimson-light);font-weight:700;white-space:nowrap;}
+.order-divider{height:1px;background:rgba(255,255,255,.06);margin:1rem 0;}
+.order-total-row{font-family:var(--font-display);font-size:1.05rem;font-weight:800;}
+.order-total-row span:last-child{color:var(--crimson-light);font-family:var(--font-mono);font-size:1.1rem;}
+.pay-section-label{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.9rem;margin-top:.2rem;}
+
+/* Elegant PayPal Container Design */
+.paypal-elegant-box {
+  background: var(--dark-4);
+  border: 1px solid rgba(201,161,74,0.15);
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.paypal-elegant-box:hover {
+  border-color: rgba(201,161,74,0.35);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.paypal-header-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.paypal-icon-svg {
+  width: 24px;
+  height: 24px;
+  fill: #0070ba;
+}
+.paypal-brand-text {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #fff;
+}
+.paypal-brand-text span {
+  color: #0070ba;
+}
+.paypal-status-msg {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 340px;
+  margin: 0 auto 1.5rem;
+  font-weight: 300;
+}
+.paypal-btn-placeholder {
+  width: 100%;
+  background: linear-gradient(135deg, #0070ba, #005ea6);
+  color: #fff;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 15px rgba(0, 112, 186, 0.2);
+}
+.paypal-btn-placeholder:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 112, 186, 0.4);
+}
+.secure-note{display:flex;align-items:flex-start;gap:.6rem;font-size:.78rem;color:var(--text-muted);background:rgba(0,212,100,.03);border:1px solid rgba(0,212,100,.1);border-radius:6px;padding:.8rem 1rem;margin-bottom:1.5rem;}
+
+.charge-summary-box{background:linear-gradient(135deg,rgba(201,161,74,.08),rgba(138,107,31,.08));border:1px solid rgba(201,161,74,.25);border-radius:8px;padding:1.1rem 1.4rem;margin-bottom:1.2rem;}
+.charge-row{display:flex;justify-content:space-between;align-items:center;gap:1rem;}
+.charge-row span:first-child{font-family:var(--font-display);font-size:.9rem;font-weight:700;}
+.charge-amount{font-family:var(--font-mono);font-size:1.3rem;font-weight:700;color:var(--crimson-light);}
+.charge-note{font-size:.75rem;color:var(--text-muted);margin-top:.4rem;}
+
+/* Hero actions spacing fix */
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:0;}
+
+/* LOADER */
+#loader{position:fixed;top:0;left:0;width:100%;height:100%;min-height:100dvh;background:var(--dark);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;transition:opacity .6s;overflow:hidden;}
+#loader.hidden{opacity:0;pointer-events:none;}
+.loader-logo{display:flex;align-items:center;justify-content:center;gap:0;font-family:var(--font-display);font-size:2.2rem;font-weight:800;letter-spacing:.04em;color:#D4AF6A;}
+.loader-logo img{width:46px;height:46px;object-fit:contain;margin-right:-2px;}
+.loader-bar{width:180px;height:1px;background:rgba(255,255,255,.07);}
+.loader-fill{height:100%;background:linear-gradient(90deg,var(--crimson),var(--violet));animation:loaderFill 1.6s ease forwards;}
+@keyframes loaderFill{from{width:0}to{width:100%}}
+.loader-sub{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--text-muted);}
+
+/* ═══ FLOATING GLOWS ═══ */
+.glow-orb{position:absolute;border-radius:50%;pointer-events:none;animation:orbFloat ease-in-out infinite;}
+@keyframes orbFloat{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-30px) scale(1.05);}}
+
+/* ═══ ANIMATED LINES SECTION DIVIDERS ═══ */
+.line-divider{position:relative;height:1px;overflow:visible;margin:0 5rem;}
+.line-divider::before{content:'';position:absolute;left:0;top:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(201,161,74,.3) 20%,rgba(138,107,31,.3) 80%,transparent);animation:linePulse 3s ease-in-out infinite;}
+@keyframes linePulse{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* ═══ MOBILE ═══ */
+@media(max-width:1024px){
+  nav{padding:1.2rem 1.5rem;width:100%;}
+  section,footer,#hero,.zayde-brand-hero{max-width:100%;overflow-x:hidden;}
+  #hero{min-height:auto;padding:5.5rem 1.5rem 2rem;display:block;}
+  .hero-content{grid-template-columns:1fr;text-align:center;gap:0;padding-bottom:0;max-width:100%;}
+  .hero-left{margin-bottom:2rem;}
+  .hero-desc{margin:0 auto 1.8rem;font-size:.95rem;}
+  .hero-actions{justify-content:center;flex-direction:column;align-items:center;gap:.8rem;margin-bottom:0;}
+  .hero-actions a{width:100%;max-width:300px;justify-content:center;}
+  .hero-stats{justify-content:center;}
+  .hero-right{display:none;}
+  .hero-scroll{display:none;}
+  #servicios,#process,#pricing,#features,#reserva,#faq,#cta-final,footer{padding:4rem 1.5rem;}
+  .servicios-grid{grid-template-columns:repeat(2,1fr);}
+  .pricing-grid{grid-template-columns:1fr;}
+  .features-layout{grid-template-columns:1fr;}
+  .features-visual{height:300px;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .form-grid{grid-template-columns:1fr;}
+  .pkg-grid{grid-template-columns:1fr;}
+  .contact-alts{grid-template-columns:1fr;}
+  .zayde-brand-hero{padding:3rem 1.5rem 2rem;}
+  .line-divider{margin:0 1.5rem;}
+}
+@media(max-width:680px){
+  .servicios-grid{grid-template-columns:1fr;}
+  .process-steps{grid-template-columns:1fr;gap:2.5rem;}
+  .process-connector{display:none;}
+  .hero-title{font-size:2.4rem;line-height:1.08;}
+  .hero-title .t1{font-size:2.4rem;}
+  .hero-title .t2{font-size:2.8rem;}
+  .hero-title .t3{font-size:1.4rem;}
+  nav{padding:.85rem 1.2rem;}
+  .nav-links{display:none;}
+  .nav-cta{padding:.45rem .9rem;font-size:.68rem;letter-spacing:.06em;}
+  .hero-right{display:none;}
+  .cursor,.cursor-ring{display:none!important;}
+}
+@media(hover:none) and (pointer:coarse){
+  .cursor,.cursor-ring{display:none!important;}
+}
+</style>
 </head>
 <body>
 
-    <!-- 1. NAVEGACIÓN -->
-    <header>
-        <div class="container nav-container">
-            <a href="#" class="logo">
-                <span class="logo-title">ZAYDE</span>
-                <span class="logo-sub">Presencia Digital</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#planes">Planes</a></li>
-                <li><a href="#contratacion">Proceso</a></li>
-                <li><a href="#faq">FAQ</a></li>
-            </ul>
-            <div>
-                <a href="#contratacion" class="btn-premium" style="padding: 0.6rem 1.5rem; font-size: 0.7rem;">Contratar</a>
-            </div>
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-logo">ZAYDE</div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+  <div class="loader-sub">Cargando Experiencia</div>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">ZAYDE</a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#process">Proceso</a></li>
+    <li><a href="#pricing">Planes</a></li>
+    <li><a href="#features">Inovación</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="#reserva" class="nav-cta">Iniciar Proyecto</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <span class="hero-eyebrow-dot"></span>Estudio Digital Premium
+      </div>
+      <h1 class="hero-title">
+        <span class="t1">Diseño que</span>
+        <span class="t2">Domina el Mercado</span>
+        <span class="t3">ZAYDE MARKETING DIGITAL</span>
+      </h1>
+      <p class="hero-desc">Creamos ecosistemas digitales de ultra-impacto: Landing Pages de alta conversión, automatizaciones avanzadas e identidades de marca imponentes.</p>
+      <div class="hero-actions">
+        <a href="#reserva" class="btn-primary"><span>Reservar Auditoría</span></a>
+        <a href="#servicios" class="btn-ghost"><span>Explorar Servicios</span></a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stats-num">100%</div>
+          <div class="hero-stat-label">Exclusividad</div>
         </div>
-    </header>
-
-    <!-- HERO SECTION ASPIRACIONAL -->
-    <section class="hero">
-        <div class="hero-content container">
-            <h1>Arquitectura Digital para Marcas de <span class="gold-text">Alto Legado</span></h1>
-            <p>Diseñamos y desarrollamos plataformas web exclusivas concebidas bajo la filosofía del lujo silencioso: sobriedad visual, velocidad implacable y conversión absoluta.</p>
-            <a href="#contratacion" class="btn-premium">Reservar Mi Sitio Web</a>
+        <div>
+          <div class="hero-stats-num">+45%</div>
+          <div class="hero-stat-label">Conversión Mínima</div>
         </div>
-    </section>
+      </div>
+    </div>
+    
+    <div class="hero-right">
+      <div class="sphere-wrap">
+        <div class="sphere-core"></div>
+        <div class="orbit-ring orbit-ring-1"><span class="orbit-dot orbit-dot-1"></span></div>
+        <div class="orbit-ring orbit-ring-2"><span class="orbit-dot orbit-dot-2"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- 2. SERVICIOS Y VALOR AGREGADO -->
-    <section id="servicios" class="services">
-        <div class="container">
-            <div class="section-header">
-                <span>Soluciones Premium</span>
-                <h2>Ingeniería y Conversión Digital</h2>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <span class="icon-num">I</span>
-                    <h3>Velocidad Extrema de Carga</h3>
-                    <p>Optimización y refinamiento técnico de código de nivel superior para garantizar despliegues impecables en menos de 2 segundos de respuesta absoluta.</p>
-                </div>
-                <div class="service-card">
-                    <span class="icon-num">II</span>
-                    <h3>100% Adaptado a Móvil</h3>
-                    <p>Fluidez responsive sin fisuras. La experiencia visual se conserva elegante, interactiva y estricta en pantallas de cualquier dispositivo smartphone.</p>
-                </div>
-                <div class="service-card">
-                    <span class="icon-num">III</span>
-                    <h3>Arquitectura de Conversión</h3>
-                    <p>Ubicación estratégica y sutil de llamadas a la acción, estructuradas de forma orgánica para transformar visitas de alto nivel en clientes comerciales estables.</p>
-                </div>
-                <div class="service-card">
-                    <span class="icon-num">IV</span>
-                    <h3>Seguridad y Disponibilidad</h3>
-                    <p>Implementación rigurosa de certificados SSL avanzados, vinculados a infraestructuras de hosting premium con estabilidad fluida y blindaje continuo.</p>
-                </div>
-            </div>
+<!-- BRAND LOGO OVERVIEW -->
+<div class="zayde-brand-hero">
+  <div class="zayde-spin-wrap">
+    <div class="zayde-spin">ZAYDE</div>
+  </div>
+  <div class="zayde-brand-sub">PRESENCIA DIGITAL ABSOLUTA</div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item">HIGH CONVERSION LANDINGS <span class="marquee-sep"></span></div>
+    <div class="marquee-item">BRANDING ELEGANTE <span class="marquee-sep"></span></div>
+    <div class="marquee-item">AI AUTOMATIONS <span class="marquee-sep"></span></div>
+    <div class="marquee-item">WEBFLOW EXPERTS <span class="marquee-sep"></span></div>
+    <div class="marquee-item">HIGH CONVERSION LANDINGS <span class="marquee-sep"></span></div>
+    <div class="marquee-item">BRANDING ELEGANTE <span class="marquee-sep"></span></div>
+  </div>
+</div>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="servicios-header">
+    <span class="section-label">Lo que hacemos</span>
+    <h2 class="section-title">Soluciones de <em>Élite Digital</em></h2>
+  </div>
+  <div class="servicios-grid">
+    <div class="servicio-card">
+      <div class="servicio-icon-wrap">⚡</div>
+      <h3 class="servicio-card-title">Landing Pages Premium</h3>
+      <p class="servicio-card-desc">Desarrollo a medida optimizado de forma milimétrica para convertir visitas en ingresos recurrentes.</p>
+      <span class="servicio-tag">Carrd & Webflow</span>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon-wrap">👑</div>
+      <h3 class="servicio-card-title">Identidad Corporativa</h3>
+      <p class="servicio-card-desc">Diseño de logotipos, tipografías y sistemas visuales imponentes que elevan el valor percibido de tu marca.</p>
+      <span class="servicio-tag">Branding Luxury</span>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon-wrap">🤖</div>
+      <h3 class="servicio-card-title">Agentes de Voz e IA</h3>
+      <p class="servicio-card-desc">Implementación de asistentes de inteligencia artificial personalizados para agendar y atender clientes 24/7.</p>
+      <span class="servicio-tag">Vapi.ai / Automation</span>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon-wrap">📈</div>
+      <h3 class="servicio-card-title">Estrategia de Conversión</h3>
+      <p class="servicio-card-desc">Embudos de venta integrales de alto impacto diseñados específicamente para el crecimiento de tu negocio.</p>
+      <span class="servicio-tag">Growth Marketing</span>
+    </div>
+  </div>
+</section>
+
+<!-- LINE DIVIDER -->
+<div class="line-divider"></div>
+
+<!-- PROCESO (Modificado según requerimientos del usuario) -->
+<section id="process">
+  <div class="process-header">
+    <span class="section-label">Metodología</span>
+    <h2 class="section-title">Tu camino al <em>Éxito Digital</em></h2>
+  </div>
+  <div class="process-steps">
+    <div class="process-connector"></div>
+    <div class="step-card">
+      <div class="step-icon">1</div>
+      <h3 class="step-title">Fase Inicial</h3>
+      <p class="step-desc">Alineación conceptual, análisis profundo de los objetivos y planeación milimétrica del proyecto.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-icon">2</div>
+      <h3 class="step-title">Desarrollo y Diseño</h3>
+      <p class="step-desc">Creación de interfaces lujosas, programación de embudos robustos y refinamiento técnico absoluto.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-icon">3</div>
+      <h3 class="step-title">Despliegue de Impacto</h3>
+      <p class="step-desc">Optimización final, pruebas de estrés y lanzamiento oficial al ecosistema digital global.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="pricing-header">
+    <span class="section-label">Inversión</span>
+    <h2 class="section-title">Planes diseñados para <em>Escalar</em></h2>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <span class="price-tier">Mega Promoción</span>
+      <div class="price-amount">$299<span>/único</span></div>
+      <p class="price-tagline">Ideal para validar ofertas de mercado y posicionar tu marca de manera ultra rápida con elegancia.</p>
+      <ul class="price-features">
+        <li class="included"><span class="check-icon check-yes">✓</span> Landing Page en Carrd</li>
+        <li class="included"><span class="check-icon check-yes">✓</span> Configuración de Dominio</li>
+        <li class="included"><span class="check-icon check-yes">✓</span> Optimización Móvil Avanzada</li>
+        <li class="not-included"><span class="check-icon check-no">✕</span> Agente de Voz Automatizado</li>
+      </ul>
+      <a href="#reserva" class="price-btn outline">Seleccionar Plan</a>
+    </div>
+    <div class="price-card featured">
+      <span class="price-badge">Popular</span>
+      <span class="price-tier">Plan Standard</span>
+      <div class="price-amount">$599<span>/único</span></div>
+      <p class="price-tagline">El equilibrio perfecto entre rendimiento digital absoluto y robustez de marca corporativa.</p>
+      <ul class="price-features">
+        <li class="included"><span class="check-icon check-yes">✓</span> Sitio Web Corporativo (Hasta 3 Páginas)</li>
+        <li class="included"><span class="check-icon check-yes">✓</span> Manual de Identidad & Logotipo</li>
+        <li class="included"><span class="check-icon check-yes">✓</span> Formulario de Reserva Avanzado</li>
+        <li class="included"><span class="check-icon check-yes">✓</span> Integración de Bot de Soporte Básico</li>
+      </ul>
+      <a href="#reserva" class="price-btn filled">Adquirir Plan</a>
+    </div>
+    <div class="price-card">
+      <span class="price-tier">Plan Pro</span>
+      <div class="price-amount">$999<span>/único</span></div>
+      <p class="price-tagline">Para marcas líderes que exigen automatizaciones absolutas y diseño de vanguardia en Webflow.</p>
+      <ul class="price-features">
+        <li class="included"><span class="check-icon check-yes">✓</span> Sitio Completo en Webflow Premium</li>
+        <li class="included"><span class="check-icon check-yes">✓</span> Identidad Visual y Material Publicitario</li>
+        <li class="included"><span class="check-icon check-yes">✓</span> Agente de Voz IA (Vapi.ai) Integrado</li>
+        <li class="included"><span class="check-icon check-yes">✓</span> Soporte VIP Mensual Incluido</li>
+      </ul>
+      <a href="#reserva" class="price-btn outline">Contactar Ventas</a>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVA / PASO DE PAGO (Diseño PayPal Elegante) -->
+<section id="reserva">
+  <div class="reserva-header">
+    <span class="section-label">Finalizar Orden</span>
+    <h2 class="section-title">Pasarela de Pago <em>Segura</em></h2>
+  </div>
+  <div class="reserva-wrap">
+    <div class="reserva-card">
+      
+      <!-- Resumen de Orden -->
+      <div class="order-summary">
+        <div class="order-summary-title">Resumen del servicio</div>
+        <div class="order-row">
+          <div>
+            <div class="order-item-name">Plan de Presencia Digital Seleccionado</div>
+            <div class="order-row-sub"><span>Zayde Marketing Digital — Setup Global</span></div>
+          </div>
+          <div class="order-item-price">Cotización del Proyecto</div>
         </div>
-    </section>
-
-    <!-- 3. PLANES DE INVERSIÓN -->
-    <section id="planes" class="pricing">
-        <div class="container">
-            <div class="section-header">
-                <span>Transparencia Absoluta</span>
-                <h2>Niveles de Inversión Corporativa</h2>
-            </div>
-            <div class="pricing-grid">
-                <!-- STARTER -->
-                <div class="price-card">
-                    <h3>Starter</h3>
-                    <div class="subtitle">Presencia Sólida</div>
-                    <div class="cost">$4,999 <span style="font-size: 1rem; color: var(--text-muted);">MXN</span></div>
-                    <ul class="price-features">
-                        <li>Arquitectura de hasta 5 secciones</li>
-                        <li>Exposición comercial del negocio</li>
-                        <li>Catálogo de servicios y tarifas</li>
-                        <li>Canales directos (WhatsApp/Llamada)</li>
-                        <li>Mapa de ubicación interactivo</li>
-                        <li>Galería fotográfica profesional</li>
-                        <li>Estructura fluida responsive</li>
-                    </ul>
-                    <a href="#contratacion" class="btn-secondary" onclick="selectPackage('starter')">Seleccionar</a>
-                </div>
-                <!-- PRO -->
-                <div class="price-card popular">
-                    <div class="badge-popular">El Más Popular</div>
-                    <h3>Pro</h3>
-                    <div class="subtitle">Automatización 24/7</div>
-                    <div class="cost">$9,000 <span style="font-size: 1rem; color: var(--text-muted);">MXN</span></div>
-                    <ul class="price-features">
-                        <li>Todo lo incluido en el plan Starter</li>
-                        <li>Dominio internacional .com (12 meses)</li>
-                        <li>Sistema funcional de reservas o contacto</li>
-                        <li>Estrategia inicial de indexación SEO</li>
-                        <li>Hasta 8 secciones personalizadas</li>
-                        <li>Certificado SSL + Hosting alta velocidad</li>
-                        <li>Google Maps con módulo de reseñas</li>
-                    </ul>
-                    <a href="#contratacion" class="btn-premium" onclick="selectPackage('pro')">Adquirir Plan</a>
-                </div>
-                <!-- ELITE -->
-                <div class="price-card">
-                    <h3>Elite</h3>
-                    <div class="subtitle">Experiencia Inmersiva</div>
-                    <div class="cost">$15,000 <span style="font-size: 1rem; color: var(--text-muted);">MXN</span></div>
-                    <ul class="price-features">
-                        <li>Todo lo incluido en el plan Pro</li>
-                        <li>Micro-interacciones y animaciones finas</li>
-                        <li>Desarrollo completo de identidad de marca</li>
-                        <li>Hasta 12 secciones de diseño exclusivo</li>
-                        <li>Pasarela e integración de pagos en línea</li>
-                        <li>Panel de control autogestionable</li>
-                        <li>Optimización extrema de velocidad</li>
-                        <li>1 mes de soporte técnico premium</li>
-                    </ul>
-                    <a href="#contratacion" class="btn-secondary" onclick="selectPackage('elite')">Seleccionar</a>
-                </div>
-            </div>
+        <div class="order-divider"></div>
+        <div class="order-total-row class-charge">
+          <span>Monto a Procesar</span>
+          <span>Sujeto a Confirmación</span>
         </div>
-    </section>
+      </div>
 
-    <!-- 4. DATOS DE PAGO Y RESERVACIÓN INTERACTIVA -->
-    <section id="contratacion" class="checkout">
-        <div class="container">
-            <div class="section-header">
-                <span>Flujo de Contratación</span>
-                <h2>Alta Presencia Digital</h2>
-            </div>
-            <div class="checkout-wrapper">
-                <div class="steps-indicator">
-                    <div class="step-dot active" id="dot-1">1</div>
-                    <div class="step-dot" id="dot-2">2</div>
-                    <div class="step-dot" id="dot-3">3</div>
-                    <div class="step-dot" id="dot-4">4</div>
-                </div>
-
-                <form id="premium-checkout-form" onsubmit="event.preventDefault();">
-                    <!-- Paso 1: Datos Personales -->
-                    <div class="step-content active" id="step-1">
-                        <h3>Identificación de la Marca</h3>
-                        <div class="form-group">
-                            <label>Nombre de Contacto</label>
-                            <input type="text" class="form-control" required placeholder="Ej. Alexander Vance">
-                        </div>
-                        <div class="form-group">
-                            <label>Correo Electrónico Corporativo</label>
-                            <input type="email" class="form-control" required placeholder="ejemplo@marca.com">
-                        </div>
-                    </div>
-
-                    <!-- Paso 2: Selección de Nivel -->
-                    <div class="step-content" id="step-2">
-                        <h3>Seleccione su Arquitectura</h3>
-                        <div class="package-selector">
-                            <label class="package-option" id="opt-starter">
-                                <div>
-                                    <span style="font-family: var(--font-serif); font-size: 1.2rem;">Starter</span>
-                                    <p style="font-size: 0.8rem; margin: 0;">Presencia Sólida Esencial</p>
-                                </div>
-                                <div class="gold-text">$4,999 MXN</div>
-                                <input type="radio" name="package_select" value="starter" onclick="updateSelectionVisual('starter')">
-                            </label>
-                            <label class="package-option" id="opt-pro">
-                                <div>
-                                    <span style="font-family: var(--font-serif); font-size: 1.2rem;">Pro — Automatización</span>
-                                </div>
-                                <div class="gold-text">$9,000 MXN</div>
-                                <input type="radio" name="package_select" value="pro" onclick="updateSelectionVisual('pro')">
-                            </label>
-                            <label class="package-option" id="opt-elite">
-                                <div>
-                                    <span style="font-family: var(--font-serif); font-size: 1.2rem;">Elite — Inmersión Global</span>
-                                </div>
-                                <div class="gold-text">$15,000 MXN</div>
-                                <input type="radio" name="package_select" value="elite" onclick="updateSelectionVisual('elite')">
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Paso 3: Detalles del Negocio -->
-                    <div class="step-content" id="step-3">
-                        <h3>Visión del Proyecto</h3>
-                        <div class="form-group">
-                            <label>Describa la esencia de su negocio u objetivos</label>
-                            <textarea class="form-control" rows="4" placeholder="Compártanos su visión comercial..."></textarea>
-                        </div>
-                    </div>
-
-                    <!-- Paso 4: Pago Seguro -->
-                    <div class="step-content" id="step-4">
-                        <h3>Esquema Financiero y Resguardo</h3>
-                        <p style="text-align: center; margin-bottom: 2rem;">Estructura de inversión diferida: <strong>50% al inicio</strong> para apertura del proyecto y <strong>50% restante</strong> contra entrega definitiva.</p>
-                        
-                        <div class="payment-methods">
-                            <!-- Integración Simulada de Botón PayPal Container -->
-                            <a href="#" class="paypal-placeholder-btn" onclick="alert('Redireccionando de manera segura a la pasarela cifrada de PayPal...');">
-                                Pagar Anticipo con PayPal
-                            </a>
-                            <p style="font-size: 0.8rem; margin-bottom: 1.5rem;">O liquide de forma directa mediante enlaces de pago cifrados para Tarjetas de Crédito / Débito o transferencia bancaria SPEI.</p>
-                        </div>
-
-                        <div class="confidentiality-note">
-                            "Tu pago es procesado de forma segura. ZAYDE nunca almacena datos de tu tarjeta."
-                        </div>
-                    </div>
-
-                    <!-- Navegación interna del formulario -->
-                    <div class="form-navigation">
-                        <button type="button" class="btn-secondary" id="prev-btn" onclick="changeStep(-1)" style="display: none;">Regresar</button>
-                        <button type="button" class="btn-premium" id="next-btn" onclick="changeStep(1)" style="margin-left: auto;">Continuar</button>
-                    </div>
-                </form>
-            </div>
+      <!-- Pasarela Elegant PayPal -->
+      <div class="pay-section-label">Método de pago express</div>
+      
+      <div class="paypal-elegant-box">
+        <div class="paypal-header-brand">
+          <svg class="paypal-icon-svg" viewBox="0 0 24 24">
+            <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 3.354a1.282 1.282 0 0 1 1.264-1.065h7.244c4.606 0 7.42 2.257 6.78 6.516-.579 3.84-2.99 6.136-6.732 6.136H9.426a.428.428 0 0 0-.423.364l-.947 6.002a.644.644 0 0 1-.63.53z"/>
+          </svg>
+          <div class="paypal-brand-text">Pay<span>Pal</span></div>
         </div>
-    </section>
+        <p class="paypal-status-msg">Procesa tu pago de forma instantánea, segura y con protección total al comprador a través de nuestra pasarela ejecutiva.</p>
+        
+        <!-- Botón de Diseño Elegante Intercambiable por Código Oficial -->
+        <button class="paypal-btn-placeholder" onclick="alert('El enlace de PayPal se activará en cuanto ingreses tus credenciales de cliente.')">
+          Pagar con PayPal Express
+        </button>
+      </div>
 
-    <!-- 5. PREGUNTAS FRECUENTES (FAQ) -->
-    <section id="faq" class="faq">
-        <div class="container">
-            <div class="section-header">
-                <span>Inquietudes Frecuentes</span>
-                <h2>Resolución de Dudas Editoriales</h2>
-            </div>
-            <div class="faq-wrapper">
-                <div class="faq-item">
-                    <button class="faq-trigger" onclick="toggleFaq(this)">¿Cuánto tiempo tarda mi sitio en estar listo? <span>+</span></button>
-                    <div class="faq-content">
-                        <p>El plan Starter se entrega en un margen de 5 a 7 días hábiles; el esquema Pro requiere de 7 a 12 días hábiles y la configuración del plan Elite conlleva de 15 a 20 días hábiles, determinados a partir de la entrega formal de materiales por parte del cliente.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-trigger" onclick="toggleFaq(this)">¿El dominio incluido en Pro y Elite es permanente? <span>+</span></button>
-                    <div class="faq-content">
-                        <p>El dominio internacional está completamente cubierto por los primeros 12 meses de operación. Las renovaciones anuales posteriores se gestionan con transparencia directamente ante el registrador correspondiente mediante notificaciones de cortesía.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-trigger" onclick="toggleFaq(this)">¿Puedo solicitar cambios después de la entrega? <span>+</span></button>
-                    <div class="faq-content">
-                        <p>Sí, incluimos de manera estricta 2 rondas completas de revisión técnica y estética sin costo extra dentro del periodo establecido. Adicionalmente, los clientes con estatus Elite gozan de 1 mes completo de soporte técnico premium post-entrega.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-trigger" onclick="toggleFaq(this)">¿Necesito fotografías profesionales para comenzar? <span>+</span></button>
-                    <div class="faq-content">
-                        <p>No es un requisito restrictivo. Nuestro equipo puede seleccionar e integrar imágenes de stock de alta gama internacional adaptadas finamente a la estética del sector, u optimizar los recursos visuales actuales con los que cuente su firma.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-trigger" onclick="toggleFaq(this)">¿Cómo funciona el esquema de pago? <span>+</span></button>
-                    <div class="faq-content">
-                        <p>Operamos bajo un esquema de certidumbre comercial mutua: se efectúa un 50% de anticipo de inversión para dar banderazo inicial al proceso de desarrollo y diseño, y el 50% restante se liquida formalmente al validar la plataforma funcional lista para producción.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-trigger" onclick="toggleFaq(this)">¿Puedo escalar a un plan superior en el futuro? <span>+</span></button>
-                    <div class="faq-content">
-                        <p>Absolutamente. Toda la arquitectura modular implementada por ZAYDE permite iniciar en una versión Starter y migrar fluidamente hacia estructuras Pro o Elite cubriendo de forma transparente la diferencia de cotización y los alcances técnicos extras.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+      <div class="secure-note">
+        <span style="color:#00d464;">🔒</span>
+        <div style="font-size:0.75rem; color:var(--text-muted);">Encriptación SSL de 256 bits. Zayde Marketing Digital no almacena datos financieros. Servicio protegido mediante la infraestructura oficial de PayPal.</div>
+      </div>
 
-    <!-- 6. CIERRE DE MARCA Y FOOTER -->
-    <footer>
-        <div class="container footer-cta">
-            <h2>Consolide su Prestigio Comercial</h2>
-            <p>Dé el paso definitivo hacia un ecosistema digital imponente y sofisticado.</p>
-            <a href="#contratacion" class="btn-premium">Reservar Mi Sitio Web</a>
-            <a href="tel:3332539967" class="contact-phone">33 3253 9967</a>
-        </div>
-        <div class="footer-bottom">
-            &copy; 2026 ZAYDE — PRESENCIA DIGITAL DE ALTO IMPACTO. TODOS LOS DERECHOS RESERVADOS.
-        </div>
-    </footer>
+    </div>
+  </div>
+</section>
 
-    <!-- LÓGICA DE INTERACCIÓN PREMIUM -->
-    <script>
-        // Acordeón FAQ
-        function toggleFaq(button) {
-            const item = button.parentElement;
-            const isActive = item.classList.contains('active');
-            
-            // Cerrar otros abiertos para mantener limpieza
-            document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
-            
-            if (!isActive) {
-                item.classList.add('active');
-            }
-        }
+<!-- FAQ -->
+<section id="faq">
+  <div class="faq-header">
+    <span class="section-label">Dudas comunes</span>
+    <h2 class="section-title">Preguntas <em>Frecuentes</em></h2>
+  </div>
+  <div class="faq-layout">
+    <div class="faq-item">
+      <div class="faq-q">¿Cuánto tiempo toma la entrega del proyecto? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Las Landing Pages promocionales toman de 3 a 5 días hábiles, mientras que los proyectos Pro que incluyen branding avanzado e integraciones de IA toman de 2 a 3 semanas.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">¿Cómo funciona la integración de los agentes de voz IA? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Utilizamos infraestructura avanzada para programar un asistente con el tono de voz y conocimiento específico de tu negocio, permitiéndole agendar citas directamente en tu calendario.</div>
+    </div>
+  </div>
+</section>
 
-        // Lógica de Pasarela Multi-Pasos
-        let currentStep = 1;
-        const totalSteps = 4;
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col footer-brand">
+      <div class="footer-brand-logo">ZAYDE</div>
+      <p>Transformamos visiones comerciales en plataformas tecnológicas implacables y exclusivas.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Estudio</h4>
+      <ul>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#process">Proceso</a></li>
+        <li><a href="#pricing">Precios</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Privacidad</a></li>
+        <li><a href="#">Términos</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>&copy; 2026 Zayde Marketing Digital. Todos los derechos reservados.</div>
+    <div>Elegancia & Conversión Absoluta</div>
+  </div>
+</footer>
 
-        function changeStep(direction) {
-            // Validación básica de campos requeridos antes de avanzar el paso 1
-            if (direction === 1 && currentStep === 1) {
-                const inputs = document.getElementById('step-1').querySelectorAll('input');
-                let valid = true;
-                inputs.forEach(i => { if(!i.checkValidity()) { i.reportValidity(); valid = false; } });
-                if (!valid) return;
-            }
+<script>
+// Loader Script
+window.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hidden');
+  }, 1000);
+});
 
-            // Ocultar paso actual
-            document.getElementById(`step-${currentStep}`).classList.remove('active');
-            document.getElementById(`dot-${currentStep}`).classList.remove('active');
+// Navbar Scroll Effect
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('navbar');
+  if(window.scrollY > 50) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
 
-            currentStep += direction;
-
-            // Mostrar nuevo paso
-            document.getElementById(`step-${currentStep}`).classList.add('active');
-            document.getElementById(`dot-${currentStep}`).classList.add('active');
-
-            // Ajustar visibilidad de botones de control
-            document.getElementById('prev-btn').style.display = currentStep === 1 ? 'none' : 'block';
-            if (currentStep === totalSteps) {
-                document.getElementById('next-btn').style.display = 'none';
-            } else {
-                document.getElementById('next-btn').style.display = 'block';
-                document.getElementById('next-btn').innerText = 'Continuar';
-            }
-        }
-
-        // Selección automatizada desde tarjetas de precios
-        function selectPackage(packageId) {
-            const radio = document.querySelector(`input[value="${packageId}"]`);
-            if (radio) {
-                radio.checked = true;
-                updateSelectionVisual(packageId);
-            }
-            
-            // Forzar navegación al paso 2 del formulario interactivo
-            document.getElementById(`step-${currentStep}`).classList.remove('active');
-            document.getElementById(`dot-${currentStep}`).classList.remove('active');
-            currentStep = 2;
-            document.getElementById(`step-${currentStep}`).classList.add('active');
-            document.getElementById(`dot-${currentStep}`).classList.add('active');
-            document.getElementById('prev-btn').style.display = 'block';
-            document.getElementById('next-btn').style.display = 'block';
-        }
-
-        function updateSelectionVisual(packageId) {
-            document.querySelectorAll('.package-option').forEach(el => el.classList.remove('selected'));
-            document.getElementById(`opt-${packageId}`).classList.add('selected');
-        }
-    </script>
+// FAQ Accordion
+document.querySelectorAll('.faq-q').forEach(item => {
+  item.addEventListener('click', () => {
+    const parent = item.parentElement;
+    parent.classList.toggle('open');
+  });
+});
+</script>
 </body>
 </html>
